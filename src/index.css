@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --color-background: 245 246 250;
+  --color-surface: 255 255 255;
+  --color-surface-muted: 244 244 249;
+  --color-foreground: 30 30 42;
+  --color-muted: 113 113 122;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @apply bg-surface text-foreground min-h-screen antialiased;
+}
+
+@media (max-width: 640px) {
+  /* Prevent iOS Safari from auto-zooming when focusing small form controls */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+.dark,
+.theme-dark {
+  color-scheme: dark;
+  --color-background: 18 19 33;
+  --color-surface: 26 27 42;
+  --color-surface-muted: 32 33 48;
+  --color-foreground: 227 229 248;
+  --color-muted: 159 161 183;
+}
+
+.grain {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.shimmer {
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 40%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
