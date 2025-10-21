@@ -72,7 +72,7 @@ export default function Sheet({ open, onClose, title, children }: SheetProps) {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-40 flex items-start justify-center bg-black/20 px-3 pt-10 pb-[calc(env(safe-area-inset-bottom)+5rem)] sm:pt-12 md:pt-14">
+    <div className="fixed inset-0 z-40 flex items-start justify-center bg-black/20 px-3 pt-10 pb-[calc(env(safe-area-inset-bottom)+6rem)] sm:pt-12 md:pt-14">
       <div
         className="absolute inset-0"
         role="presentation"
