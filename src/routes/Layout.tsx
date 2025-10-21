@@ -20,14 +20,14 @@ export default function Layout() {
     'flex h-16 flex-1 flex-col items-center justify-center gap-1 rounded-full px-3 text-xs font-medium transition';
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-background pb-24">
-      <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 pb-24 pt-6 md:px-6">
+    <div className="relative flex min-h-screen flex-col bg-background">
+      <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 pb-32 pt-6 md:px-6">
         <Outlet />
       </div>
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 flex justify-center px-4 pb-6">
+      <footer className="sticky bottom-0 z-40 border-t border-white/10 bg-surface/95 backdrop-blur">
         <nav
           aria-label="Main"
-          className="pointer-events-auto flex w-full max-w-md items-center justify-between gap-1 rounded-full border border-white/10 bg-surface/95 px-2 py-2 shadow-lg backdrop-blur"
+          className="mx-auto flex w-full max-w-md items-center justify-between gap-1 rounded-t-3xl px-3 py-3 shadow-lg"
         >
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
@@ -63,7 +63,7 @@ export default function Layout() {
             );
           })}
         </nav>
-      </div>
+      </footer>
       <Sheet open={showAddModal} onClose={() => setShowAddModal(false)} title="Quick add">
         <AddFoodModal open={showAddModal} onClose={() => setShowAddModal(false)} />
       </Sheet>
