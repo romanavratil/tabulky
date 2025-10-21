@@ -71,7 +71,7 @@ export default function Sheet({ open, onClose, title, children }: SheetProps) {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-40 flex items-end justify-center bg-black/20 px-3 pb-4 pt-12 sm:items-center sm:pb-0">
+    <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/20 px-3 py-8">
       <div
         className="absolute inset-0"
         role="presentation"
@@ -90,7 +90,7 @@ export default function Sheet({ open, onClose, title, children }: SheetProps) {
             </h2>
           </div>
         )}
-        <div className="max-h-[70vh] overflow-y-auto px-6 pb-6 pt-4 sm:max-h-[80vh]">{children}</div>
+        <div className="max-h-[80vh] overflow-y-auto px-6 pb-6 pt-4">{children}</div>
       </div>
     </div>
   );
