@@ -17,18 +17,15 @@ export default function Layout() {
   const actionItem = NAV_ITEMS.find((item) => item.isCentral);
   const ActionIcon = actionItem?.icon;
   const itemBaseClasses =
-    'flex h-16 flex-1 flex-col items-center justify-center gap-1 rounded-full px-3 text-xs font-medium transition';
+    'flex h-14 flex-1 flex-col items-center justify-center gap-1 rounded-full px-3 text-xs font-medium transition';
 
   return (
     <div className="relative flex min-h-screen flex-col bg-background">
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 pb-32 pt-6 md:px-6">
         <Outlet />
       </div>
-      <footer className="sticky bottom-0 z-40 border-t border-white/10 bg-surface/95 backdrop-blur">
-        <nav
-          aria-label="Main"
-          className="mx-auto flex w-full max-w-md items-center justify-between gap-1 rounded-t-3xl px-3 py-3 shadow-lg"
-        >
+      <footer className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-surface/95 backdrop-blur">
+        <div className="mx-auto flex w-full max-w-md items-center justify-between gap-1 px-3 py-2 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] shadow-lg">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             if (item.isCentral && ActionIcon) {
@@ -62,7 +59,7 @@ export default function Layout() {
               </NavLink>
             );
           })}
-        </nav>
+        </div>
       </footer>
       <Sheet open={showAddModal} onClose={() => setShowAddModal(false)} title="Quick add">
         <AddFoodModal open={showAddModal} onClose={() => setShowAddModal(false)} />
