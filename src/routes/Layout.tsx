@@ -35,13 +35,15 @@ export default function Layout() {
               if (item.isCentral && ActionIcon) {
                 return (
                   <button
-                  key="quick-add"
-                  type="button"
-                  aria-label="Quick add"
-                  onClick={() => setShowAddModal(true)}
+                    key="quick-add"
+                    type="button"
+                    aria-label={showAddModal ? 'Close quick add' : 'Quick add'}
+                    onClick={() => setShowAddModal((prev) => !prev)}
                     className={`${itemBaseClasses} flex-none px-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-surface`}
                   >
-                    <span className="grid h-10 w-10 place-items-center rounded-full bg-brand shadow-soft md:h-12 md:w-12">
+                    <span className="grid h-10 w-10 place-items-center rounded-full bg-brand shadow-soft transition-transform duration-200 md:h-12 md:w-12"
+                      style={{ transform: showAddModal ? 'rotate(45deg)' : 'rotate(0deg)' }}
+                    >
                       <ActionIcon className="h-5 w-5 md:h-6 md:w-6" />
                     </span>
                   </button>

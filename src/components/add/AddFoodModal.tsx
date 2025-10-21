@@ -155,22 +155,24 @@ export default function AddFoodModal({ open, onClose, initialEntry }: AddFoodMod
     <>
       <div className={containerClasses}>
         <div className="order-1 flex flex-col gap-4 lg:order-none lg:col-start-1">
-          <header className="flex items-start justify-between gap-4">
+          <header className="flex flex-col gap-2">
+            <div className="flex items-center justify-between">
+              <p className="text-xs uppercase tracking-wide text-muted">Quick add</p>
+              <button
+                type="button"
+                onClick={onClose}
+                aria-label="Close add modal"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-muted transition hover:text-foreground"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
             <div>
-              <p className="text-xs uppercase tracking-wide text-muted">Quick Add</p>
               <h1 className="text-xl font-semibold text-foreground">Find and log food</h1>
               <p className="text-sm text-muted">
                 Type to search Open Food Facts, or tap a favorite for instant access.
               </p>
             </div>
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label="Close add modal"
-              className="rounded-full border border-white/10 p-2 text-muted hover:text-foreground"
-            >
-              <X className="h-4 w-4" />
-            </button>
           </header>
 
           <div className="relative">

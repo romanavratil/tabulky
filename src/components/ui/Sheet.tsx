@@ -42,18 +42,19 @@ export default function Sheet({ open, onClose, title, children }: SheetProps) {
       return;
     }
 
-    if (previousStyles.current) return;
-    scrollPosition.current = window.scrollY;
-    previousStyles.current = {
-      overflow: document.body.style.overflow || '',
-      position: document.body.style.position || '',
-      top: document.body.style.top || '',
-      width: document.body.style.width || '',
-    };
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollPosition.current}px`;
-    document.body.style.width = '100%';
+    if (!previousStyles.current) {
+      scrollPosition.current = window.scrollY;
+      previousStyles.current = {
+        overflow: document.body.style.overflow || '',
+        position: document.body.style.position || '',
+        top: document.body.style.top || '',
+        width: document.body.style.width || '',
+      };
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollPosition.current}px`;
+      document.body.style.width = '100%';
+    }
 
     return () => {
       if (previousStyles.current) {
@@ -71,7 +72,7 @@ export default function Sheet({ open, onClose, title, children }: SheetProps) {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/20 px-3 py-8">
+    <div className="fixed inset-0 z-40 flex items-start justify-center bg-black/20 px-3 pt-10 pb-[calc(env(safe-area-inset-bottom)+5rem)] sm:pt-12 md:pt-14">
       <div
         className="absolute inset-0"
         role="presentation"
@@ -90,7 +91,9 @@ export default function Sheet({ open, onClose, title, children }: SheetProps) {
             </h2>
           </div>
         )}
-        <div className="max-h-[80vh] overflow-y-auto px-6 pb-6 pt-4">{children}</div>
+        <div className="w-full overflow-y-auto px-6 pb-6 pt-4" style={{ maxHeight: 'calc(85vh - 5rem)' }}>
+          {children}
+        </div>
       </div>
     </div>
   );
